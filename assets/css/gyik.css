@@ -1,0 +1,228 @@
+/* Reset és alap beállítások */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Háttér overlay - elhomályosított */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 9998;
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Felugró box */
+.popup-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: #ffffff;
+    border-radius: 30px;
+    padding: 2rem;
+    max-width: 400px;
+    width: 90%;
+    z-index: 9999;
+    box-shadow: 0 20px 60px rgba(205, 133, 63, 0.5);
+    animation: popIn 0.6s ease 0.3s forwards;
+}
+
+/* Close gomb */
+.close-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    font-size: 2.5rem;
+    color: #666;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: #CD853F;
+    transform: rotate(90deg);
+}
+
+/* Popup tartalom */
+.popup-content {
+    text-align: center;
+}
+
+.popup-content h1 {
+    color: #CD853F;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    letter-spacing: 0.3rem;
+}
+
+/* Kép konténer */
+.image-container {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 1.5rem;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Szöveg */
+.popup-content p {
+    color: #666;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+/* Alcím stílus */
+.popup-content .subtitle {
+    font-size: 1rem;
+    color: #999;
+    font-style: italic;
+    margin-top: -1rem;
+    margin-bottom: 2rem;
+}
+
+/* OK gomb */
+.ok-btn {
+    background: linear-gradient(135deg, #814E34 0%, #CD853F 100%);
+    color: #ffffff;
+    border: none;
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(205, 133, 63, 0.3);
+}
+
+.ok-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(205, 133, 63, 0.5);
+}
+
+.ok-btn:active {
+    transform: translateY(0);
+}
+
+/* Animációk */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes popIn {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+    }
+    70% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Bezárás animáció */
+.popup-box.closing {
+    animation: popOut 0.4s ease forwards;
+}
+
+.overlay.closing {
+    animation: fadeOut 0.4s ease forwards;
+}
+
+@keyframes popOut {
+    from {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* Responsive */
+@media (max-width: 767.98px) {
+    .popup-box {
+        width: 95%;
+        padding: 2rem;
+        border-radius: 20px;
+    }
+    
+    .popup-content h1 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        letter-spacing: 0.2rem;
+    }
+    
+    .popup-content p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .popup-content .subtitle {
+        font-size: 0.9rem;
+        margin-top: -0.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .ok-btn {
+        padding: 0.875rem 2.5rem;
+        font-size: 1rem;
+    }
+    
+    .close-btn {
+        top: 1rem;
+        right: 1.5rem;
+        font-size: 2rem;
+    }
+}
