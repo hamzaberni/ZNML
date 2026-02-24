@@ -134,7 +134,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="index.php">
                 <span class="brand-text">ZOONIMAL</span>
                 <span class="brand-subtitle"></span>
             </a>
@@ -150,15 +150,15 @@
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Kezdőlap</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.php">Kezdőlap</a></li>
                         <li class="nav-item"><a class="nav-link" href="#portfolio">Edzők</a></li>
                         <li class="nav-item"><a class="nav-link" href="#services">Óratípusok</a></li>
                         <li class="nav-item"><a class="nav-link" href="#timetable">Órarend</a></li>
-                        <li class="nav-item"><a class="nav-link" href="prices.html">Árak</a></li>
+                        <li class="nav-item"><a class="nav-link" href="prices.php">Árak</a></li>
                         <li class="nav-item"><a class="nav-link" href="#about">Rólunk</a></li>
                         <!-- <li class="nav-item"><a class="nav-link" href="#process">Kapcsolat</a></li> -->
                         <!-- <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li> -->
-                        <li class="nav-item"><a class="nav-link" href="kapcsolat.html">Kapcsolat</a></li>
+                        <li class="nav-item"><a class="nav-link" href="kapcsolat.php">Kapcsolat</a></li>
                     </ul>
                 </div>
             </div>
@@ -245,6 +245,9 @@
                 <div class="col-lg-8 mx-auto text-center">
                     <div class="section-header" data-aos="fade-up">
                         <span class="section-subtitle">Óráink</span>
+                            <a href="https://secure.myoptime.eu/fit/login" class="btn btn-primary" data-aos="fade-up"
+                        data-aos-delay="700">Foglalás</a>
+
                         <!-- <h2 class="section-title">Comprehensive Design Solutions</h2> -->
                         <!-- <p class="section-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa dolores molestiae repudiandae dolorum esse aspernatur delectus odit debitis. Libero eos alias aliquam molestiae quis aliquid consequatur obcaecati, recusandae voluptates quae.</p> -->
                     </div>
@@ -260,7 +263,7 @@
                         <h3>Funkcionális edzés - FMT</h3>
                         <!-- <p>Complete architectural solutions from initial concept through construction documentation and
                             project management.</p> -->
-                        <a href="fmt.html" class="classes-link">Részletek</a>
+                        <a href="fmt.php" class="classes-link">Részletek</a>
 
                     </div>
                 </div>
@@ -272,7 +275,7 @@
                         </div>
                         <h3>Funkcionális izomépítés</h3>
                         <!-- <p>A funkcionális izomépítés órán a klasszikus szabadsúlyos testépítő gyakorlatokat ötvözzük a funkcionális alapmozgásokkal. Nincs nagy varázslat, egyszerű alapgyakorlatokat és izolált mozgásokat alkalmazunk a hatékony izomépítés céljából, szigorúan szem előtt tartva az ízületi mozgások teljes tartományát és az ízületek egészségét. Célunk az izomépítés, de nem minden áron.. na jó, lehet egy kicsit mégis!</p> -->
-                        <a href="fst.html" class="classes-link">Részletek</a>
+                        <a href="fst.php" class="classes-link">Részletek</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
@@ -283,7 +286,7 @@
                         </div>
                         <h3>Magas intenzitású intervallum edzés - HIIT</h3>
                         <!-- <p>A magas intenzitású intervall edzés rövid, pörgős szakaszokból áll - intenzív, magas pulzustartományban végzett munkát nyugalmi pihenőszakasz követ, így magas intenzitás mellett is hatékonyan tudjuk a gyakorlatokat elvégezni a technika és a szabályos kivitelezés kompromittálását elkerülve. Ideális állóképesség javítására, erősítésre és izomépítésre, illetve kalóriák tömeges égetésére.</p> -->                          
-                        <a href="hiit.html" class="classes-link">Részletek</a>
+                        <a href="hiit.php" class="classes-link">Részletek</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
@@ -294,7 +297,7 @@
                         </div>
                         <h3>Core Training</h3>
                         <!-- <p>A jól funkcionáló törzs az alapja mindennek, így ezen az órán erre fektetjük a hangsúlyt. A pulzusod nem lesz az egekben, sőt, nagyon látványos feladatokat se fogsz végezni, de garantált a törzsizomzat elfáradása, fejlődése és a használatának a megtanulása!</p> -->
-                        <a href="core.html" class="classes-link">Részletek</a>
+                        <a href="core.php" class="classes-link">Részletek</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
@@ -306,7 +309,7 @@
                         <h3>Peach Body</h3>
                         <!-- <p>Expert guidance and creative direction to help bring your architectural and design vision to
                             life.</p> -->
-                        <a href="peachbody.html" class="classes-link">Részletek</a>
+                        <a href="peachbody.php" class="classes-link">Részletek</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="600">
@@ -318,7 +321,7 @@
                         <h3>Ladies First</h3>
                         <!-- <p>Photorealistic renderings and virtual walkthroughs that bring your project to life before
                             construction begins.</p> -->
-                        <a href="ladiesfirst.html" class="classes-link">Részletek</a>
+                        <a href="ladiesfirst.php" class="classes-link">Részletek</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="600">
@@ -330,7 +333,7 @@
                         <h3>Raw Power</h3>
                         <!-- <p>Photorealistic renderings and virtual walkthroughs that bring your project to life before
                             construction begins.</p> -->
-                        <a href="rawpower.html" class="classes-link">Részletek</a>
+                        <a href="rawpower.php" class="classes-link">Részletek</a>
                     </div>
                 </div>
                                 <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="600">
@@ -342,7 +345,7 @@
                         <h3>WoManMaker</h3>
                         <!-- <p>Photorealistic renderings and virtual walkthroughs that bring your project to life before
                             construction begins.</p> -->
-                        <a href="womanmaker.html" class="classes-link">Részletek</a>
+                        <a href="womanmaker.php" class="classes-link">Részletek</a>
                     </div>
                 </div>
 
@@ -891,33 +894,33 @@
                 <div class="col-lg-2 col-md-6 mb-4">
                     <h5>Linkek</h5>
                     <ul class="footer-links">
-                        <li><a href="index.html">Kezdőlap</a></li>
-                        <li><a href="index.html#portfolio">Edzők</a></li>
-                        <li><a href="index.html#services">Óratípusok</a></li>
-                        <li><a href="prices.html">Árak</a></li>
-                        <li><a href="index.html#about">Rólunk</a></li>
-                        <li><a href="kapcsolat.html">Kapcsolat</a></li>
+                        <li><a href="index.php">Kezdőlap</a></li>
+                        <li><a href="index.php#portfolio">Edzők</a></li>
+                        <li><a href="index.php#services">Óratípusok</a></li>
+                        <li><a href="prices.php">Árak</a></li>
+                        <li><a href="index.php#about">Rólunk</a></li>
+                        <li><a href="kapcsolat.php">Kapcsolat</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-6 mb-4">
                     <h5>Óratípusok</h5>
                     <ul class="footer-links">
-                        <li><a href="fmt.html">FMT</a></li>
-                        <li><a href="fst.html">Funkcionális izomépítés</a></li>
-                        <li><a href="hiit.html">HIIT</a></li>
-                        <li><a href="core.html">Core Training</a></li>
-                        <li><a href="peachbody.html">Peach Body</a></li>
-                        <li><a href="ladiesfirst.html">Ladies First</a></li>
-                        <li><a href="rawpower.html">Raw Power</a></li>
-                        <li><a href="womanmaker.html">WoManMaker</a></li>
+                        <li><a href="fmt.php">FMT</a></li>
+                        <li><a href="fst.php">Funkcionális izomépítés</a></li>
+                        <li><a href="hiit.php">HIIT</a></li>
+                        <li><a href="core.php">Core Training</a></li>
+                        <li><a href="peachbody.php">Peach Body</a></li>
+                        <li><a href="ladiesfirst.php">Ladies First</a></li>
+                        <li><a href="rawpower.php">Raw Power</a></li>
+                        <li><a href="womanmaker.php">WoManMaker</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-6 mb-4">
                     <h5>Egyéb</h5>
                     <ul class="footer-links">
-                        <li><a href="design.html">Adatvédelmi Szabályzat</a></li>
+                        <li><a href="design.php">Adatvédelmi Szabályzat</a></li>
                         <li><a href="#">Általános Szerződési Feltételek</a></li>
-                        <li><a href="gyik.html">GY.I.K.</a></li>
+                        <li><a href="gyik.php">GY.I.K.</a></li>
                     </ul>
                 </div>
             </div>

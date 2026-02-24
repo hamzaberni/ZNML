@@ -135,7 +135,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="index.php">
                 <span class="brand-text">ZOONIMAL</span>
                 <span class="brand-subtitle"></span>
             </a>
@@ -150,15 +150,15 @@
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Kezdőlap</a></li>
-                        <li class="nav-item"><a class="nav-link" href="index.html#portfolio">Edzők</a></li>
-                        <li class="nav-item"><a class="nav-link" href="index.html#services">Óratípusok</a></li>
-                        <li class="nav-item"><a class="nav-link" href="index.html#timetable">Órarend</a></li>
-                        <li class="nav-item"><a class="nav-link" href="prices.html">Árak</a></li>
-                        <li class="nav-item"><a class="nav-link" href="index.html#about">Rólunk</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.php">Kezdőlap</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.php#portfolio">Edzők</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.php#services">Óratípusok</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.php#timetable">Órarend</a></li>
+                        <li class="nav-item"><a class="nav-link" href="prices.php">Árak</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.php#about">Rólunk</a></li>
                         <!-- <li class="nav-item"><a class="nav-link" href="#process">Kapcsolat</a></li> -->
                         <!-- <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li> -->
-                        <li class="nav-item"><a class="nav-link" href="kapcsolat.html">Kapcsolat</a></li>
+                        <li class="nav-item"><a class="nav-link" href="kapcsolat.php">Kapcsolat</a></li>
                     </ul>
                 </div>
             </div>
@@ -202,7 +202,7 @@
                     <p class="consult-hero-subtitle" data-aos="fade-up" data-aos-delay="500">
                         Vedd fel velünk a kapcsolatot az alábbi elérhetőségeken, vagy küldj üzenetet közvetlenül az űrlap segítségével.
                     </p>
-                    <a href="kapcsolat.html#consultation-form" class="btn btn-primary" data-aos="fade-up"
+                    <a href="kapcsolat.php#consultation-form" class="btn btn-primary" data-aos="fade-up"
                         data-aos-delay="700">Írj nekünk</a>
                 </div>
             </div>
@@ -425,25 +425,25 @@
                 <div class="col-lg-2 col-md-6 mb-4">
                     <h5>Linkek</h5>
                     <ul class="footer-links">
-                        <li><a href="index.html">Kezdőlap</a></li>
-                        <li><a href="index.html#portfolio">Edzők</a></li>
-                        <li><a href="index.html#services">Óratípusok</a></li>
-                        <li><a href="prices.html">Árak</a></li>
-                        <li><a href="index.html#about">Rólunk</a></li>
-                        <li><a href="kapcsolat.html">Kapcsolat</a></li>
+                        <li><a href="index.php">Kezdőlap</a></li>
+                        <li><a href="index.php#portfolio">Edzők</a></li>
+                        <li><a href="index.php#services">Óratípusok</a></li>
+                        <li><a href="prices.php">Árak</a></li>
+                        <li><a href="index.php#about">Rólunk</a></li>
+                        <li><a href="kapcsolat.php">Kapcsolat</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-6 mb-4">
                     <h5>Óratípusok</h5>
                     <ul class="footer-links">
-                        <li><a href="fmt.html">FMT</a></li>
-                        <li><a href="fst.html">Funkcionális izomépítés</a></li>
-                        <li><a href="hiit.html">HIIT</a></li>
-                        <li><a href="core.html">Core Training</a></li>
-                        <li><a href="peachbody.html">Peach Body</a></li>
-                        <li><a href="ladiesfirst.html">Ladies First</a></li>
-                        <li><a href="rawpower.html">Raw Power</a></li>
-                        <li><a href="womanmaker.html">WoManMaker</a></li>
+                        <li><a href="fmt.php">FMT</a></li>
+                        <li><a href="fst.php">Funkcionális izomépítés</a></li>
+                        <li><a href="hiit.php">HIIT</a></li>
+                        <li><a href="core.php">Core Training</a></li>
+                        <li><a href="peachbody.php">Peach Body</a></li>
+                        <li><a href="ladiesfirst.php">Ladies First</a></li>
+                        <li><a href="rawpower.php">Raw Power</a></li>
+                        <li><a href="womanmaker.php">WoManMaker</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-6 mb-4">
@@ -451,7 +451,7 @@
                     <ul class="footer-links">
                         <li><a href="">Adatvédelmi Szabályzat</a></li>
                         <li><a href="#">Általános Szerződési Feltételek</a></li>
-                        <li><a href="gyik.html">GY.I.K.</a></li>
+                        <li><a href="gyik.php">GY.I.K.</a></li>
 
                     </ul>
                 </div>

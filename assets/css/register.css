@@ -1,0 +1,70 @@
+/* =============================================
+   AUTH – Register-specifikus stílusok
+   ============================================= */
+
+/* ── Kétoszlopos sor ── */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+@media (max-width: 480px) {
+    .form-row { grid-template-columns: 1fr; }
+}
+
+/* ── Jelszóerősség ── */
+.password-strength {
+    display: flex;
+    gap: 4px;
+    margin-top: 0.5rem;
+}
+
+.strength-bar {
+    height: 3px;
+    flex: 1;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: background 0.3s;
+}
+
+.strength-bar.weak   { background: #ff4d4d; }
+.strength-bar.medium { background: #ffaa00; }
+.strength-bar.strong { background: #4ddb77; }
+
+.strength-text {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.35);
+    margin-top: 0.3rem;
+}
+
+/* ── ÁSZF checkbox ── */
+.terms-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.terms-checkbox {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    accent-color: var(--accent-color);
+    cursor: pointer;
+}
+
+.terms-label {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+    line-height: 1.5;
+}
+
+.terms-label a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.terms-label a:hover { text-decoration: underline; }
