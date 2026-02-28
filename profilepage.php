@@ -1,3 +1,17 @@
+<?php
+require __DIR__ . "/backend/db.php";        
+session_start();
+if (!isset($_SESSION["user_id"])) {
+    header("Location: login.php");
+    exit();
+}
+
+$stmt = $conn->prepare("SELECT id, email, name, phone, created_at FROM users WHERE id = ?");
+$stmt->bind_param("i", $_SESSION["user_id"]);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
+?>  
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -38,8 +52,8 @@
         <div class="sidebar-user">
             <img src="assets/images/profilepic.png" alt="Profilkép" class="sidebar-avatar">
             <div class="sidebar-user-info">
-                <span class="sidebar-user-name">Felhasználó neve</span>
-                <span class="sidebar-user-email">pelda@email.hu</span>
+                <span class="sidebar-user-name"><?php echo htmlspecialchars($user['name']); ?></span>
+                <span class="sidebar-user-email"><?php echo htmlspecialchars($user['email']); ?></span>
             </div>
         </div>
         <button class="sidebar-close" id="sidebarClose" aria-label="Bezárás">
@@ -102,8 +116,7 @@
                     <input type="file" id="avatarInput" accept="image/*" style="display:none">
                 </div>
                 <div class="avatar-info">
-                    <h2 class="avatar-name">Felhasználó neve</h2>
-                    <span class="avatar-since">Tag: 2025. január óta</span>
+                    <h2 class="avatar-name"><?php echo htmlspecialchars($user['name']); ?></h2>
                     <span class="avatar-badge">
                         <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
                         Aktív tag
@@ -119,10 +132,11 @@
                     <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
                     Személyes adatok
                 </h3>
-                <button class="btn-edit" id="editPersonalBtn">
+                <!--<button class="btn-edit" id="editPersonalBtn">
                     <svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
                     Szerkesztés
                 </button>
+                -->
             </div>
 
             <form class="data-form" id="personalForm">
@@ -130,7 +144,7 @@
                     <label class="field-label">Teljes név</label>
                     <div class="field-wrap">
                         <span class="field-icon"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></span>
-                        <input type="text" class="field-input" name="fullname" value="Felhasználó neve" disabled>
+                        <input type="text" class="field-input" name="fullname" value="<?php echo htmlspecialchars($user['name']); ?>" disabled>
                     </div>
                 </div>
 
@@ -138,7 +152,7 @@
                     <label class="field-label">Email cím</label>
                     <div class="field-wrap">
                         <span class="field-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></span>
-                        <input type="email" class="field-input" name="email" value="pelda@email.hu" disabled>
+                        <input type="email" class="field-input" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" disabled>
                     </div>
                 </div>
 
@@ -146,15 +160,7 @@
                     <label class="field-label">Telefonszám</label>
                     <div class="field-wrap">
                         <span class="field-icon"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></span>
-                        <input type="tel" class="field-input" name="phone" value="+36 30 000 0000" disabled>
-                    </div>
-                </div>
-
-                <div class="field-group">
-                    <label class="field-label">Születési dátum</label>
-                    <div class="field-wrap">
-                        <span class="field-icon"><svg viewBox="0 0 24 24"><path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg></span>
-                        <input type="date" class="field-input" name="birthdate" value="1990-01-01" disabled>
+                        <input type="tel" class="field-input" name="phone" value="<?php echo htmlspecialchars($user['phone']); ?>" disabled>
                     </div>
                 </div>
 
@@ -168,7 +174,7 @@
             </form>
         </div>
 
-        <!-- jelszóváltoztatás -->
+        <!-- jelszóváltoztatás 
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">
@@ -178,16 +184,7 @@
             </div>
 
             <form class="data-form" id="passwordForm">
-                <div class="field-group">
-                    <label class="field-label">Jelenlegi jelszó</label>
-                    <div class="field-wrap">
-                        <span class="field-icon"><svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></span>
-                        <input type="password" class="field-input" name="current_password" placeholder="••••••••">
-                        <button type="button" class="toggle-pw" onclick="togglePw(this)">
-                            <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-                        </button>
-                    </div>
-                </div>
+               
 
                 <div class="field-group">
                     <label class="field-label">Új jelszó</label>
@@ -227,8 +224,7 @@
                 </div>
             </form>
         </div>
-
-        <!-- fiókbiztonság card -->
+        <!-- fiókbiztonság card 
         <div class="card card--security">
             <div class="card-header">
                 <h3 class="card-title">
@@ -266,6 +262,7 @@
                 </div>
             </div>
         </div>
+        -->
 
     </div>
 </main>

@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -232,9 +236,10 @@
                         </div>
                         <h3>Jelentkezz az órára</h3>
                         <p>Gyere és próbáld ki ezt az edzést nálunk!</p>
+                        <?php if (isset($_SESSION["user_id"])): ?>
                             <a href="https://secure.myoptime.eu/fit/login" class="btn btn-primary" data-aos="fade-up"
                         data-aos-delay="700">Foglalás</a>
-
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

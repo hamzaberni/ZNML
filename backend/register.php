@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["fullname"] = $fullname;
         $_SESSION["phone"] = $phone;
 
-        header("Location: ../profile.php");
+        header("Location: ../profilepage.php");
         exit();
 
     } else {

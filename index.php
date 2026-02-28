@@ -155,6 +155,12 @@
                         <li class="nav-item"><a class="nav-link" href="#services">Óratípusok</a></li>
                         <li class="nav-item"><a class="nav-link" href="#timetable">Órarend</a></li>
                         <li class="nav-item"><a class="nav-link" href="prices.php">Árak</a></li>
+                        <?php if (isset($_SESSION["user_id"]) && $_SESSION["is_admin"] == 0): ?>
+                            <li class="nav-item"><a class="nav-link" href="profilepage.php">Profil</a></li>
+                        <?php endif; ?>
+                        <?php if (isset($_SESSION["user_id"]) && $_SESSION["is_admin"] == 1): ?>
+                            <li class="nav-item"><a class="nav-link" href="admin.php">Admin</a></li>
+                        <?php endif; ?>
                         <li class="nav-item"><a class="nav-link" href="#about">Rólunk</a></li>
                         <!-- <li class="nav-item"><a class="nav-link" href="#process">Kapcsolat</a></li> -->
                         <!-- <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li> -->
@@ -183,7 +189,8 @@
                     </clipPath>
                   </defs>
                 </svg>
-              </a>             
+              </a>  
+              
             </div>
         </div>
     </nav>
@@ -245,6 +252,7 @@
                 <div class="col-lg-8 mx-auto text-center">
                     <div class="section-header" data-aos="fade-up">
                         <span class="section-subtitle">Óráink</span>
+                        <?php if (isset($_SESSION["user_id"])): ?>
                             <a href="https://secure.myoptime.eu/fit/login" class="btn btn-primary" data-aos="fade-up"
                         data-aos-delay="700">Foglalás</a>
 
@@ -253,6 +261,7 @@
                     </div>
                 </div>
             </div>
+            <?php endif; ?>
             <div class="row">
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="service-card">
