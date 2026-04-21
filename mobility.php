@@ -1,16 +1,18 @@
 <?php
 session_start();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Funkcionális edzés FMT – ZOONIMAL</title>
-    <meta name="description" content="Az FMT órán funkcionális edzést végzünk, az emberi alapmozgásokra építve. Tudatos és jóleső mozgás a ZOONIMAL edzőteremben.">
-    <meta name="keywords" content="funkcionális edzés, FMT, szabadsúlyos edzés, zoonimal">    
-    
+    <title>Mobility – ZOONIMAL</title>
+    <meta name="description" content="Mobility óra: ízületi mozgástartomány növelése, feszességek oldása és tudatos mozgásfejlesztés. Ajánlott kezdőknek és haladóknak egyaránt. ZOONIMAL edzőterem - Debrecen.">
+    <meta name="keywords" content="mobility edzés, mozgástartomány, nyújtás, regeneráció, funkcionális mozgás, zoonimal, edzőterem">
+
     <link rel="icon" href="assets/images/monkey.png">
     <!-- Bootstrap 5 CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -52,7 +54,7 @@ session_start();
         </div>
     </div>
 
-<!-- Cookie Banner -->
+    <!-- Cookie Banner -->
 <div id="cookieBanner" class="cookie-banner">
     <div class="cookie-content">
         <div class="cookie-icon">
@@ -141,7 +143,6 @@ session_start();
 </button>
 
 
-
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
         <div class="container">
@@ -200,17 +201,18 @@ session_start();
     </nav>
 
     <!-- Hero Section -->
-    <section class="arch-hero-section">
-        <div class="arch-hero-background"></div>
-        <div class="arch-hero-overlay"></div>
+    <section class="ladies-hero-section">
+        <div class="ladies-hero-background"></div>
+        <div class="ladies-hero-overlay"></div>
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-lg-8">
-                    <h1 class="arch-hero-title" data-aos="fade-up" data-aos-delay="300">
+                    <h1 class="ladies-hero-title" data-aos="fade-up" data-aos-delay="300">
                         Edzéseink
+                        <!-- <span class="accent-text">Excellence</span> -->
                     </h1>
-                    <p class="arch-hero-subtitle" data-aos="fade-up" data-aos-delay="500">
-                        Funkcionális edzés
+                    <p class="ladies-hero-subtitle" data-aos="fade-up" data-aos-delay="500">
+                        Mobility
                     </p>
                 </div>
             </div>
@@ -223,9 +225,11 @@ session_start();
             <div class="row">
                 <div class="col-lg-8 mx-auto text-center">
                     <div class="section-header" data-aos="fade-up">
-                        <span class="section-subtitle">Funkcionális edzés</span>
+                        <span class="section-subtitle">Mobility</span>
                         <!-- <h2 class="section-title">Interior Design Services</h2> -->
-                        <p class="section-description">Az FMT órán funkcionális edzést végzünk, itt a fő hangsúly az emberi alapmozgásokon van, ezekre építjük fel a programot. Ez inkább egy "általános" edzés, ami az egész testet átmozgatja, és ezeken az edzéseken a szabad súlyos, a saját testsúlyos, a törzsfókuszú és a cardiosabb gyakorlatok dominálnak. Ha tudatosan és jólesően szeretnél mozogni, ez a te órád!</p>
+                        <p class="section-description">A Mobility óra célja az ízületi mozgástartomány növelése, a feszességek oldása és a tudatos, kontrollált mozgás fejlesztése.
+                        Lassabb átmozgató és nyújtó gyakorlatokat végzünk, amelyekkel csökkentjük a sérülésveszélyt és támogatjuk az edzésteljesítményt.
+                        Ajánlott kezdőknek és haladóknak egyaránt, kiegészítő edzésként vagy regenerációs céllal.</p>
                     </div>
                 </div>
             </div>
@@ -239,14 +243,61 @@ session_start();
                         <p>Gyere és próbáld ki ezt az edzést nálunk!</p>
                         <?php if (isset($_SESSION["user_id"])): ?>
                             <a href="https://secure.myoptime.eu/fit/login" class="btn btn-primary" data-aos="fade-up"
-                        data-aos-delay="400">Foglalás</a>
+                        data-aos-delay="700">Foglalás</a>
                         <?php endif; ?>
-
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Interior Design Process -->
+    <!-- <section class="section-padding bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <div class="section-header" data-aos="fade-up">
+                        <span class="section-subtitle">Our Approach</span>
+                        <h2 class="section-title">The Design Process</h2>
+                        <p class="section-description">A collaborative journey that transforms your vision into a
+                            beautifully designed space that exceeds expectations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="interior-process-step">
+                        <div class="interior-step-number">01</div>
+                        <h4>Discovery & Consultation</h4>
+                        <p>Understanding your needs, lifestyle, and vision for the space through detailed discussions.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="interior-process-step">
+                        <div class="interior-step-number">02</div>
+                        <h4>Concept Development</h4>
+                        <p>Creating mood boards, color schemes, and preliminary designs based on your preferences.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="interior-process-step">
+                        <div class="interior-step-number">03</div>
+                        <h4>Design Refinement</h4>
+                        <p>Refining the design, selecting materials, furniture, and finishes for your approval.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="interior-process-step">
+                        <div class="interior-step-number">04</div>
+                        <h4>Implementation</h4>
+                        <p>Overseeing the execution and installation to ensure flawless realization of the design.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
 
     <!-- Question Section -->
     <section class="interior-cta-section bg-light">
@@ -260,7 +311,6 @@ session_start();
             </div>
         </div>
     </section>
-
 <!-- Footer -->
     <footer class="footer bg-dark">
         <div class="container">
@@ -357,7 +407,6 @@ session_start();
 
     <link rel="stylesheet" href="assets/css/cookie-banner.css">
     <script src="assets/js/cookie-banner.js"></script>
-
 </body>
 
 </html>

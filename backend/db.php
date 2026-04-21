@@ -1,8 +1,8 @@
 <?php
 $host = "localhost";
-$dbname = "zweb";
-$username = "root";
-$password = "";
+$dbname = "drszarka_zweb";
+$username = "drszarka_zweb";
+$password = "ci)jNhIZL6FT~zvw";
 
 $conn = new mysqli($host, $username, $password, $dbname);
 

@@ -331,6 +331,11 @@ h6 {
 .right-links-block .link svg path {
     fill: #000000;
 }
+.right-links-block {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+}
 
 .right-links-block .link {
     text-decoration: none;
@@ -706,7 +711,7 @@ p.lead {
 }
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
   gap: 2rem;
 }
 .portfolio-item {
@@ -726,8 +731,8 @@ p.lead {
 }
 
 .portfolio-item .portfolio-image img {
-    max-width: 400px; 
-    max-height: 400px;
+    max-width: 100%; 
+    max-height: 100%;
     width: auto;
     height: auto;
     object-fit: contain;
@@ -1932,6 +1937,17 @@ p.lead {
   background-position: center;
 }
 
+.mobility-hero-background {
+  background: url("../images/edzespics/mobility.jpg") center/cover no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
 .arch-process-step,
 .interior-process-step {
   text-align: center;
@@ -2493,7 +2509,7 @@ p.lead {
     display: flex;
     flex-direction: column;
     height: 100%;
-    min-height: 450px;
+    min-height: 300px;
 }
 .card-spacer {
     flex-grow: 1;
@@ -2839,4 +2855,8 @@ p.lead {
     background: #4ddb77;
     border: 2px solid #1e1e1e;
     border-radius: 50%;
+}
+
+#services .container {
+    max-width: 1320px;
 }

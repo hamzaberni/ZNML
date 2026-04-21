@@ -32,6 +32,6 @@ function closePopup() {
     
     // Eltávolítás az animáció után
     setTimeout(() => {
-        window.location.href = 'index.html';
+        window.location.href = 'index.php';
     }, 400);
 }

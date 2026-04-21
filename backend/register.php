@@ -1,5 +1,9 @@
 <?php
 session_start();
+
+
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 require "db.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -18,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("A jelszónak minimum 6 karakternek kell lennie.");
     }
 
-    // Ellenőrizzük, létezik-e már
+     // Ellenőrizzük, létezik-e már
     $check = $conn->prepare("SELECT id FROM users WHERE email = ?");
     $check->bind_param("s", $email);
     $check->execute();
@@ -30,8 +34,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    $stmt = $conn->prepare("INSERT INTO users (email, password, name, phone) VALUES (?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO users (email, password, name, phone, is_admin) VALUES (?, ?, ?, ?, '0')");
     $stmt->bind_param("ssss", $email, $hashedPassword, $fullname, $phone);
+
     if ($stmt->execute()) {
         $userId = $stmt->insert_id;
 
@@ -39,10 +44,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $_SESSION["user_id"] = $userId;
         $_SESSION["email"] = $email;
-        $_SESSION["fullname"] = $fullname;
+        $_SESSION["user_name"] = $fullname;
         $_SESSION["phone"] = $phone;
+        $_SESSION["is_admin"] = 0;
 
-        header("Location: ../profilepage.php");
+        header("Location: ../index.php");
         exit();
 
     } else {

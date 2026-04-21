@@ -50,7 +50,7 @@ function initContactForms() {
                     
                     // Sikeres üzenet megjelenítése
                     if (formMessage) {
-                        formMessage.innerHTML = '<div class="alert alert-success">Üzenet sikeresen elküldve! Hamarosan felvesszük Önnel a kapcsolatot.</div>';
+                        formMessage.innerHTML = '<div class="alert alert-success">Üzenet sikeresen elküldve! Hamarosan felvesszük veled a kapcsolatot.</div>';
                         formMessage.style.display = 'block';
                     }
                     
@@ -70,7 +70,7 @@ function initContactForms() {
                     
                     // Hiba üzenet megjelenítése
                     if (formMessage) {
-                        formMessage.innerHTML = '<div class="alert alert-danger">Hiba történt az üzenet küldése során. Kérjük, próbálja újra később.</div>';
+                        formMessage.innerHTML = '<div class="alert alert-danger">Hiba történt az üzenet küldése során. Kérjük, próbáld újra később.</div>';
                         formMessage.style.display = 'block';
                     }
                     

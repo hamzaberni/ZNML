@@ -1,3 +1,5 @@
+<?php ?>
+
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -5,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GY.I.K.</title>
     <link rel="stylesheet" href="assets/css/gyik.css">
+    <link rel="icon" href="assets/images/monkey.png">
+
 </head>
 <body>
     <!-- Background overlay -->
@@ -22,6 +26,7 @@
         </div>
     </div>
 
-    <script src="assets/js/gyik.js"></script>
+<script src="assets/js/gyik.js?v=<?php echo time(); ?>"></script>
+
 </body>
 </html>

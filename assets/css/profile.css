@@ -367,9 +367,10 @@ body {
 /* ── grid ── */
 .profile-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 1.25rem;
 }
+
 
 .card {
     background: var(--card-bg);

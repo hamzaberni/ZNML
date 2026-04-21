@@ -21,6 +21,8 @@ $user = $result->fetch_assoc();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/profile.css">
+    <link rel="icon" href="assets/images/monkey.png">
+
 </head>
 <body>
 
@@ -32,11 +34,10 @@ $user = $result->fetch_assoc();
 
 <!-- ── topbar ── -->
 <header class="topbar">
-    <div class="topbar-brand">
+    <a href="index.php" class="topbar-brand">
         <img src="assets/images/monkey.png" alt="ZOONIMAL" class="topbar-logo-img">
         <span class="topbar-brand-name">ZOONIMAL</span>
-    </div>
-
+    </a>
     <button class="profile-btn" id="profileBtn" aria-label="Profil menü">
         <img src="assets/images/profilepic.png" alt="Profilkép" class="profile-btn-img">
         <span class="profile-btn-dot"></span>
@@ -61,32 +62,39 @@ $user = $result->fetch_assoc();
         </button>
     </div>
 
-    <nav class="sidebar-nav">
-        <a href="profile.html" class="sidebar-link active" data-page="profile">
-            <span class="sidebar-link-icon">
-                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-            </span>
-            <span>Saját adatok</span>
-            <svg class="sidebar-link-arrow" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
-        </a>
+<nav class="sidebar-nav">
+    <a href="profilepage.php" class="sidebar-link">
+        <span class="sidebar-link-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        </span>
+        <span>Saját adatok</span>
+        <svg class="sidebar-link-arrow" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+    </a>
 
-        <a href="notifications.html" class="sidebar-link" data-page="notifications">
-            <span class="sidebar-link-icon">
-                <svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
-            </span>
-            <span>Értesítések</span>
-            <span class="sidebar-badge">3</span>
-            <svg class="sidebar-link-arrow" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
-        </a>
+    <span class="sidebar-link sidebar-link--disabled">
+        <span class="sidebar-link-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+        </span>
+        <span>Értesítések</span>
+        <span style="margin-left:auto;font-size:0.68rem;color:rgba(255,255,255,0.25);font-style:italic;">hamarosan</span>
+    </span>
 
-        <a href="legal.html" class="sidebar-link" data-page="legal">
-            <span class="sidebar-link-icon">
-                <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
-            </span>
-            <span>Adatkezelési tájékoztató és ÁSZF</span>
-            <svg class="sidebar-link-arrow" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
-        </a>
-    </nav>
+    <a href="assets/documents/ADATKEZELESI_TAJEKOZTATO.pdf" class="sidebar-link">
+        <span class="sidebar-link-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+        </span>
+        <span>Adatkezelési tájékoztató</span>
+        <svg class="sidebar-link-arrow" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+    </a>
+
+    <a href="assets/documents/ASZF.pdf" class="sidebar-link">
+        <span class="sidebar-link-icon">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+        </span>
+        <span>Általános Szerződési Feltételek</span>
+        <svg class="sidebar-link-arrow" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+    </a>
+</nav>    
 
     <div class="sidebar-footer">
         <a href="backend/logout.php" class="sidebar-logout">

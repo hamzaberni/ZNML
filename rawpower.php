@@ -7,10 +7,11 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zoonimal</title>
-    <meta name="description"
-        content="Premium architecture and interior design studio creating extraordinary spaces that inspire and elevate everyday living.">
-    <meta name="keywords" content="architecture, interior design, luxury homes, commercial spaces, residential design">
+
+    <title>Raw Power – Nyers Erő – ZOONIMAL</title>
+    <meta name="description" content="Húzódzkodás alapgyakorlatra épülő komplex felsőtest erősítés. Fogóerő, törzs és segédizmok fejlesztése a ZOONIMAL edzőteremben.">
+    <meta name="keywords" content="raw power, húzódzkodás, felsőtest erősítés, zoonimal">    
+    
     <link rel="icon" href="assets/images/monkey.png">
     <!-- Bootstrap 5 CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -21,6 +22,8 @@ session_start();
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
         rel="stylesheet">
+    <link rel="icon" href="assets/images/monkey.png">
+
 
     <!-- AOS Animation Library -->
     <link href="assets/css/aos.css" rel="stylesheet">
@@ -233,7 +236,7 @@ session_start();
                         <div class="interior-service-icon">
                         <img src="assets/images/monkey.png" alt="Logo" width="150" height="150">
                         </div>
-                        <h3>Jelentkezz az órára</h3>
+                        <!-- <h3>Jelentkezz az órára</h3> -->
                         <p>Gyere és próbáld ki ezt az edzést nálunk!</p>
                         <?php if (isset($_SESSION["user_id"])): ?>
                             <a href="https://secure.myoptime.eu/fit/login" class="btn btn-primary" data-aos="fade-up"
@@ -364,8 +367,8 @@ session_start();
                 <div class="col-lg-2 col-md-6 mb-4">
                     <h5>Egyéb</h5>
                     <ul class="footer-links">
-                        <li><a href="">Adatvédelmi Szabályzat</a></li>
-                        <li><a href="#">Általános Szerződési Feltételek</a></li>
+                        <li><a href="assets/documents/ADATKEZELESI_TAJEKOZTATO.pdf">Adatvédelmi Szabályzat</a></li>
+                        <li><a href="assets/documents/ASZF.pdf" target="_blank">Általános Szerződési Feltételek</a>
                         <li><a href="gyik.php">GY.I.K.</a></li>
 
                         <!-- <li><a href="#">Press Kit</a></li>

@@ -1,14 +1,57 @@
+<?php
+session_start(); ?>
+
+<?php
+if (isset($_SESSION['user_id']) && isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 0) {
+    require_once __DIR__ . '/backend/db.php';
+    $s = $conn->prepare("SELECT name, email FROM users WHERE id = ?");
+    $s->bind_param("i", $_SESSION['user_id']);
+    $s->execute();
+    $u = $s->get_result()->fetch_assoc();
+    $_SESSION['user_name']  = $u['name'];
+    $_SESSION['user_email'] = $u['email'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-    <?php session_start(); ?>
+    
+    <?php
+if (isset($_SESSION['user_id']) && isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 0) {
+    require_once __DIR__ . '/backend/db.php';
+    $s = $conn->prepare("SELECT name, email FROM users WHERE id = ?");
+    $s->bind_param("i", $_SESSION['user_id']);
+    $s->execute();
+    $u = $s->get_result()->fetch_assoc();
+    $_SESSION['user_name']  = $u['name'];
+    $_SESSION['user_email'] = $u['email'];
+}
+?>
 <head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JMF1VYWE55"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JMF1VYWE55');
+</script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zoonimal</title>
-    <meta name="description"
-        content="Premium architecture and interior design studio creating extraordinary spaces that inspire and elevate everyday living.">
-    <meta name="keywords" content="architecture, interior design, luxury homes, commercial spaces, residential design">
+
+    <meta property="og:title" content="ZOONIMAL – Funkcionális edzőterem - Debrecen">
+    <meta property="og:description" content="Egy lelkes csapat, akik valahol a minimalizmus és az állatkodás között félúton edzenek.">
+    <meta property="og:image" content="https://zoonimal.hu/assets/images/monkey.png">
+    <meta property="og:url" content="https://zoonimal.hu">
+    <meta property="og:type" content="website">
+
     <link rel="icon" href="assets/images/monkey.png">
+        <link rel="icon" href="assets/images/monkey.png">
+
     <!-- Bootstrap 5 CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 
@@ -155,12 +198,6 @@
                         <li class="nav-item"><a class="nav-link" href="#services">Óratípusok</a></li>
                         <li class="nav-item"><a class="nav-link" href="#timetable">Órarend</a></li>
                         <li class="nav-item"><a class="nav-link" href="prices.php">Árak</a></li>
-                        <?php if (isset($_SESSION["user_id"]) && $_SESSION["is_admin"] == 0): ?>
-                            <li class="nav-item"><a class="nav-link" href="profilepage.php">Profil</a></li>
-                        <?php endif; ?>
-                        <?php if (isset($_SESSION["user_id"]) && $_SESSION["is_admin"] == 1): ?>
-                            <li class="nav-item"><a class="nav-link" href="admin.php">Admin</a></li>
-                        <?php endif; ?>
                         <li class="nav-item"><a class="nav-link" href="#about">Rólunk</a></li>
                         <!-- <li class="nav-item"><a class="nav-link" href="#process">Kapcsolat</a></li> -->
                         <!-- <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li> -->
@@ -190,10 +227,163 @@
                   </defs>
                 </svg>
               </a>  
-              
+            </div>
+            <div>
+
+<?php if (isset($_SESSION["user_id"]) && $_SESSION["is_admin"] == 0): ?>
+<button class="profile-btn" id="profileBtn" aria-label="Profil menü" style="display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;padding:0;overflow:hidden;margin-left:0.75rem;">
+    <img src="assets/images/profilepic.png" alt="Profilkép" class="profile-btn-img" style="width:42px;height:42px;border-radius:50%;object-fit:cover;display:block;">
+    <span class="profile-btn-dot"></span>
+</button>                
+<?php endif; ?>
+<?php if (isset($_SESSION["user_id"]) && $_SESSION["is_admin"] == 1): ?>
+<a href="admin.php" style="display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;padding:0;overflow:hidden;margin-left:0.75rem;border-radius:50%;border:2px solid rgba(205,133,63,0.4);position:relative;flex-shrink:0;">
+    <img src="assets/images/profilepic.png" alt="Admin" style="width:42px;height:42px;border-radius:50%;object-fit:cover;display:block;">
+    <span style="position:absolute;bottom:-2px;right:-2px;width:10px;height:10px;background:#CD853F;border:2px solid #1e1e1e;border-radius:50%;"></span>
+</a>
+<?php endif; ?>
             </div>
         </div>
-    </nav>
+</nav>
+
+<?php include 'countdown-banner.php'; ?>
+
+
+<?php if (isset($_SESSION["user_id"]) && $_SESSION["is_admin"] == 0): ?>
+<style>
+#sidebar {
+    position: fixed;
+    top: 0; right: 0;
+    width: 320px;
+    height: 100%;
+    z-index: 99999;
+    background: #1e1e1e;
+    border-left: 1px solid rgba(205,133,63,0.18);
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.38s cubic-bezier(0.16,1,0.3,1);
+    box-shadow: -10px 0 40px rgba(0,0,0,0.4);
+    font-family: 'Montserrat', sans-serif;
+}
+#sidebar.open { transform: translateX(0); }
+#sidebarOverlay {
+    position: fixed; inset: 0;
+    z-index: 99998;
+    background: rgba(0,0,0,0.55);
+    opacity: 0; visibility: hidden;
+    transition: opacity 0.35s, visibility 0.35s;
+}
+#sidebarOverlay.active { opacity: 1; visibility: visible; }
+#sidebar .sidebar-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    display: flex; align-items: center;
+    justify-content: space-between; gap: 1rem;
+    background: #1e1e1e;
+}
+#sidebar .sidebar-user { display: flex; align-items: center; gap: 0.85rem; min-width: 0; }
+#sidebar .sidebar-avatar {
+    width: 46px; height: 46px;
+    border-radius: 50%; object-fit: cover;
+    border: 2px solid rgba(205,133,63,0.4); flex-shrink: 0;
+}
+#sidebar .sidebar-user-name { font-size: 0.9rem; font-weight: 600; color: #fff; display: block; }
+#sidebar .sidebar-user-email { font-size: 0.75rem; color: rgba(255,255,255,0.4); display: block; }
+#sidebar .sidebar-close {
+    background: none; border: none; cursor: pointer;
+    color: rgba(255,255,255,0.4); padding: 0.25rem; display: flex;
+}
+#sidebar .sidebar-close svg { width: 22px; height: 22px; fill: currentColor; }
+#sidebar .sidebar-nav { flex: 1; padding: 0.75rem 0; }
+#sidebar .sidebar-link {
+    display: flex; align-items: center; gap: 0.85rem;
+    padding: 0.9rem 1.5rem; text-decoration: none;
+    color: rgba(255,255,255,0.6); font-size: 0.88rem; font-weight: 500;
+    transition: background 0.2s, color 0.2s; position: relative;
+}
+#sidebar .sidebar-link:hover { background: rgba(255,255,255,0.04); color: #fff; }
+#sidebar .sidebar-link-icon {
+    width: 32px; height: 32px;
+    background: rgba(255,255,255,0.06); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+#sidebar .sidebar-link-icon svg { width: 16px; height: 16px; fill: currentColor; }
+#sidebar .sidebar-link-arrow { width: 16px; height: 16px; fill: currentColor; margin-left: auto; opacity: 0.4; flex-shrink: 0; }
+#sidebar .sidebar-footer {
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    background: #1e1e1e;
+}
+#sidebar .sidebar-logout {
+    display: flex; align-items: center; gap: 0.75rem;
+    text-decoration: none; color: rgba(255,255,255,0.4);
+    font-size: 0.85rem; font-weight: 500; transition: color 0.3s;
+}
+#sidebar .sidebar-logout:hover { color: #ff6b7a; }
+#sidebar .sidebar-logout svg { width: 18px; height: 18px; fill: currentColor; }
+
+#sidebar .sidebar-link--disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+</style>
+
+<div id="sidebarOverlay"></div>
+<aside id="sidebar">
+    <div class="sidebar-header">
+        <div class="sidebar-user">
+            <img src="assets/images/profilepic.png" alt="Profilkép" class="sidebar-avatar">
+            <div class="sidebar-user-info">
+                <span class="sidebar-user-name"><?php echo htmlspecialchars($_SESSION['user_name'] ?? ''); ?></span>
+                <span class="sidebar-user-email"><?php echo htmlspecialchars($_SESSION['user_email'] ?? ''); ?></span>
+            </div>
+        </div>
+        <button class="sidebar-close" id="sidebarClose" aria-label="Bezárás">
+            <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+    </div>
+<nav class="sidebar-nav">
+    <a href="profilepage.php" class="sidebar-link">
+        <span class="sidebar-link-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        </span>
+        <span>Saját adatok</span>
+        <svg class="sidebar-link-arrow" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+    </a>
+
+    <span class="sidebar-link sidebar-link--disabled">
+        <span class="sidebar-link-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+        </span>
+        <span>Értesítések</span>
+        <span style="margin-left:auto;font-size:0.68rem;color:rgba(255,255,255,0.25);font-style:italic;">hamarosan</span>
+    </span>
+
+    <a href="assets/documents/ADATKEZELESI_TAJEKOZTATO.pdf" class="sidebar-link">
+        <span class="sidebar-link-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+        </span>
+        <span>Adatkezelési tájékoztató</span>
+        <svg class="sidebar-link-arrow" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+    </a>
+
+    <a href="assets/documents/ASZF.pdf" class="sidebar-link">
+        <span class="sidebar-link-icon">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+        </span>
+        <span>Általános Szerződési Feltételek</span>
+        <svg class="sidebar-link-arrow" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+    </a>
+</nav>    <div class="sidebar-footer">
+        <a href="backend/logout.php" class="sidebar-logout">
+            <svg viewBox="0 0 24 24"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
+            Kijelentkezés
+        </a>
+    </div>
+</aside>
+<?php endif; ?>    
 
     <!-- Hero Section -->
     <section id="home" class="hero-section">
@@ -258,10 +448,11 @@
 
                         <!-- <h2 class="section-title">Comprehensive Design Solutions</h2> -->
                         <!-- <p class="section-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa dolores molestiae repudiandae dolorum esse aspernatur delectus odit debitis. Libero eos alias aliquam molestiae quis aliquid consequatur obcaecati, recusandae voluptates quae.</p> -->
+                         <?php endif; ?>
                     </div>
                 </div>
             </div>
-            <?php endif; ?>
+            
             <div class="row">
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="service-card">
@@ -345,7 +536,7 @@
                         <a href="rawpower.php" class="classes-link">Részletek</a>
                     </div>
                 </div>
-                                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="600">
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="600">
                     <div class="service-card">
                         <div class="service-icon">
                             <img src="assets/images/edzespics/manmaker.jpg"
@@ -357,6 +548,20 @@
                         <a href="womanmaker.php" class="classes-link">Részletek</a>
                     </div>
                 </div>
+
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <img src="assets/images/edzespics/mobility.jpg"
+                                alt="3D Visualization">
+                        </div>
+                        <h3>Mobility</h3>
+                        <!-- <p>Photorealistic renderings and virtual walkthroughs that bring your project to life before
+                            construction begins.</p> -->
+                        <a href="mobility.php" class="classes-link">Részletek</a>
+                    </div>
+                </div>
+
 
             </div>
         </div>
@@ -827,7 +1032,7 @@
                     <div class="col-md-12">
                         <div class="check-block mb-24">
                             <input type="checkbox" id="remember">
-                                <label for="remember">Hozzájárulok személyes adataim gyűjtéséhez és tárolásához.</label>
+                                <label for="remember">Hozzájárulok személyes adataim gyűjtéséhez és tárolásához, illetve betöltöttem a 16. életévet.</label>
                         </div>
                     </div>
 
@@ -846,8 +1051,9 @@
                     </div>
                     <div class="contact-item">
                         <h5>Kapcsolatfelvétel</h5>
-                        <p>Telefonszám:<br>+36303093111<br>Pekárovics Zoltán<br>Szakmai vezető<br><br>
-                        +36204447398<br>Szűcs Imre<br>Üzleti vezető<br><br>Email: info@zoonimal.hu</p>
+                        <p>Telefonszám:<br><a href="tel:+36303093111" class="hover-content black fw-500 text-16">+36303093111</a><br>Pekárovics Zoltán<br>Szakmai vezető<br><br>
+                        <a href="tel:+36204447398" class="hover-content black fw-500 text-16">+36204447398</a><br>Szűcs Imre<br>Üzleti vezető<br><br>Email: <a href="mailto:info@zoonimal.hu"
+                                        class="hover-content black fw-500 text-16">info@zoonimal.hu</a></p>
                     </div>
                 </div>
             </div>
@@ -927,8 +1133,8 @@
                 <div class="col-lg-2 col-md-6 mb-4">
                     <h5>Egyéb</h5>
                     <ul class="footer-links">
-                        <li><a href="design.php">Adatvédelmi Szabályzat</a></li>
-                        <li><a href="#">Általános Szerződési Feltételek</a></li>
+                        <li><a href="assets/documents/ADATKEZELESI_TAJEKOZTATO.pdf">Adatvédelmi Szabályzat</a></li>
+                        <li><a href="assets/documents/ASZF.pdf" target="_blank">Általános Szerződési Feltételek</a>
                         <li><a href="gyik.php">GY.I.K.</a></li>
                     </ul>
                 </div>
@@ -975,6 +1181,23 @@
 
     <link rel="stylesheet" href="assets/css/cookie-banner.css">
     <script src="assets/js/cookie-banner.js"></script>
+
+<?php if (isset($_SESSION["user_id"]) && $_SESSION["is_admin"] == 0): ?>
+<script>
+    const profileBtn     = document.getElementById('profileBtn');
+    const sidebar        = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    const sidebarClose   = document.getElementById('sidebarClose');
+
+    function openSidebar()  { sidebar.classList.add('open'); sidebarOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeSidebar() { sidebar.classList.remove('open'); sidebarOverlay.classList.remove('active'); document.body.style.overflow = ''; }
+
+    profileBtn?.addEventListener('click', openSidebar);
+    sidebarClose?.addEventListener('click', closeSidebar);
+    sidebarOverlay?.addEventListener('click', closeSidebar);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSidebar(); });
+</script>
+<?php endif; ?>
 
 </body>
 </html>

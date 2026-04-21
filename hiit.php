@@ -7,10 +7,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zoonimal</title>
-    <meta name="description"
-        content="Premium architecture and interior design studio creating extraordinary spaces that inspire and elevate everyday living.">
-    <meta name="keywords" content="architecture, interior design, luxury homes, commercial spaces, residential design">
+
+    <title>HIIT – Magas intenzitású intervallum edzés – ZOONIMAL</title>
+    <meta name="description" content="Rövid, pörgős szakaszokból álló magas intenzitású intervallum edzés. Ideális állóképesség javítására és kalóriaégetésre.">
+    <meta name="keywords" content="HIIT, intervallum edzés, kardió, kalóriaégetés, zoonimal">   
+     
     <link rel="icon" href="assets/images/monkey.png">
     <!-- Bootstrap 5 CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -21,6 +22,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
         rel="stylesheet">
+    <link rel="icon" href="assets/images/monkey.png">
+
 
     <!-- AOS Animation Library -->
     <link href="assets/css/aos.css" rel="stylesheet">
@@ -317,8 +320,8 @@
                 <div class="col-lg-2 col-md-6 mb-4">
                     <h5>Egyéb</h5>
                     <ul class="footer-links">
-                        <li><a href="">Adatvédelmi Szabályzat</a></li>
-                        <li><a href="#">Általános Szerződési Feltételek</a></li>
+                        <li><a href="assets/documents/ADATKEZELESI_TAJEKOZTATO.pdf">Adatvédelmi Szabályzat</a></li>
+                        <li><a href="assets/documents/ASZF.pdf" target="_blank">Általános Szerződési Feltételek</a>
                         <li><a href="gyik.php">GY.I.K.</a></li>
 
                         <!-- <li><a href="#">Press Kit</a></li>

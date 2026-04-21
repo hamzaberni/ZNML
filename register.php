@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION["user_id"])) {
-    header("Location: profile.php");
+    header("Location: index.php");
     exit();
 }
 
@@ -18,6 +18,8 @@ $error = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : '';
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/auth.css">
     <link rel="stylesheet" href="assets/css/register.css">
+    <link rel="icon" href="assets/images/monkey.png">
+
 </head>
 <body>
 
@@ -118,7 +120,7 @@ $error = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : '';
             <div class="terms-row">
                 <input type="checkbox" id="terms" class="terms-checkbox" required>
                 <label for="terms" class="terms-label">
-                    Elfogadom az <a href="#">Általános Szerződési Feltételeket</a> és az <a href="#">Adatvédelmi Tájékoztatót</a>
+                    Elfogadom az <a href="assets/documents/ASZF.pdf" target="_blank">Általános Szerződési Feltételeket</a> és az <a href="assets/documents/ADATKEZELESI_TAJEKOZTATO.pdf">Adatvédelmi Szabályzatot</a>
                 </label>
             </div>
 
