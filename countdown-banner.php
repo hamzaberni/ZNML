@@ -13,10 +13,16 @@
             <div class="countdown-banner-text">
                 <span class="countdown-banner-label">Újabb lehetőség</span>
                 <span class="countdown-banner-title">
-                    🏋️ <span>Kezdő csoport indul</span> – Csatlakozz ....
+                    <span>Kezdő csoportok indulnak</span> – Csatlakozz hozzánk május 5-én! 
                 </span>
             </div>
         </div>
+
+        <!-- button -->
+        <a href="kezdo.php" class="countdown-banner-cta">
+            Érdekel →
+        </a>
+
 
         <!-- Elválasztó (desktop) -->
         <div class="countdown-banner-divider"></div>
