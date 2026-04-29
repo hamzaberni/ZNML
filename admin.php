@@ -235,7 +235,7 @@
                 </tbody>
                 <?php endforeach; ?>
             </table>
-            <div class="table-empty" id="tableEmpty" style="display:none">
+            <div class="table-empty" id="tableEmpty" style="display:none !important">
                 <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
                 Nincs találat
             </div>
@@ -259,16 +259,16 @@
             <div class="field-group">
                 <label class="field-label">Gyors sablonok</label>
                 <div class="template-btns">
-                    <button type="button" class="btn-template" data-title="ÁSZF módosítás" data-msg="Tájékoztatjuk, hogy az Általános Szerződési Feltételeinket frissítettük. Kérjük, tekintse át az új feltételeket az Adatkezelési tájékoztató menüpontban.">
+                    <button type="button" class="btn-template" data-title="ÁSZF módosítás" data-msg="Tájékoztatunk, hogy az Általános Szerződési Feltételeinket frissítettük. Kérjük, nézd át az új feltételeket az Általános Szerződési Feltételek menüpontban.">
                         ÁSZF módosítás
                     </button>
-                    <button type="button" class="btn-template" data-title="Rendszerkarbantartás" data-msg="Tájékoztatjuk, hogy tervezett rendszerkarbantartás miatt a weboldal átmenetileg nem lesz elérhető. Kellemetlenségért elnézést kérünk.">
+                    <button type="button" class="btn-template" data-title="Rendszerkarbantartás" data-msg="Tájékoztatunk, hogy tervezett rendszerkarbantartás miatt a weboldal átmenetileg nem lesz elérhető.">
                         Karbantartás
                     </button>
-                    <button type="button" class="btn-template" data-title="Üdvözlő üzenet" data-msg="Üdvözöljük a ZOONIMAL közösségében! Örülünk, hogy csatlakozott hozzánk.">
+                    <!-- <button type="button" class="btn-template" data-title="Üdvözlő üzenet" data-msg="Üdvöz a ZOONIMAL közösségében! Örülünk, hogy csatlakozott hozzánk.">
                         Üdvözlő
-                    </button>
-                    <button type="button" class="btn-template" data-title="Promóció" data-msg="Különleges ajánlattal készültünk Önnek! Látogasson el weboldalunkra a részletekért.">
+                    </button> -->
+                    <button type="button" class="btn-template" data-title="Promóció" data-msg="Különleges ajánlattal készültünk nektek! Látogass el az Instagram vagy Facebook oldalunkra a részletekért.">
                         Promóció
                     </button>
                 </div>
@@ -292,38 +292,7 @@
                 <div class="char-counter"><span id="charCount">0</span> / 500 karakter</div>
             </div>
 
-            <!-- Címzett -->
-            <div class="field-group">
-                <label class="field-label">Célcsoport</label>
-                <div class="recipient-options">
-                    <label class="radio-label">
-                        <input type="radio" name="recipients" value="all" checked class="radio-input">
-                        <span class="radio-box"></span>
-                        <span>Minden felhasználó (<span id="recipientCount">0</span> fő)</span>
-                    </label>
-                    <label class="radio-label" id="selectedRadioLabel">
-                        <input type="radio" name="recipients" value="selected" class="radio-input" id="selectedRadio">
-                        <span class="radio-box"></span>
-                        <span>Csak kijelöltek (<span id="selectedCount">0</span> fő)</span>
-                    </label>
-                </div>
-            </div>
-
-            <!-- Előnézet -->
-            <div class="notif-preview" id="notifPreview" style="display:none">
-                <div class="notif-preview-header">
-                    <svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
-                    Előnézet
-                </div>
-                <div class="notif-preview-title" id="previewTitle"></div>
-                <div class="notif-preview-msg" id="previewMsg"></div>
-            </div>
-
             <div class="form-actions">
-                <button type="button" class="btn-cancel" id="previewBtn">
-                    <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-                    Előnézet
-                </button>
                 <button type="submit" class="btn-save" style="margin-left:auto">
                     <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
                     Értesítés küldése
@@ -332,11 +301,11 @@
         </form>
 
         <!-- Küldési előzmények -->
-        <div class="notif-history">
+        <!-- <div class="notif-history">
             <h4 class="history-title">Korábbi értesítések</h4>
             <div class="history-list" id="historyList">
             </div>
-        </div>
+        </div> -->
     </section>
 
 </main>

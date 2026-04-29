@@ -12,6 +12,10 @@
 
     <!-- Stílusok -->
     <link rel="stylesheet" href="assets/css/kezdo.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>emailjs.init('wZWcUTd8xiYiRYZGo');</script>
+
 </head>
 <body>
 
@@ -186,19 +190,20 @@
             <!-- Csoport választó -->
             <div class="kf-picker">
                 <div class="kf-option" data-value="Kedd–Csütörtök 16:00–17:00">
-                    <div class="kf-option-icon">🌆</div>
+                    <div class="kf-option-icon">🌅</div>
                 <div class="kf-option-info">
                         <span class="kf-option-days">Kedd &amp; Csütörtök</span>
-                        <span class="kf-option-time">16:00 – 17:00</span>
+                        <span class="kf-option-time">7:30 – 8:30</span>
                     </div>
                     <div class="kf-option-check">✓</div>
                 </div>
                 <div class="kf-option" data-value="Kedd–Csütörtök 07:30–08:30">
-                    <div class="kf-option-icon">🌅</div>
+                    <div class="kf-option-icon">🌆</div>
                     <div class="kf-option-info">
                         <span class="kf-option-days">Kedd &amp; Csütörtök</span>
-                        <span class="kf-option-time">07:30 – 08:30</span>
+                        <span class="kf-option-time">16:00 – 17:00</span>
                     </div>
+                    
                     <div class="kf-option-check">✓</div>
                 </div>
             </div>

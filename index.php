@@ -353,13 +353,13 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['is_admin']) && $_SESSION['is
         <svg class="sidebar-link-arrow" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
     </a>
 
-    <span class="sidebar-link sidebar-link--disabled">
+    <a href="notifications.php" class="sidebar-link" data-section="notifications">
         <span class="sidebar-link-icon">
             <svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
         </span>
         <span>Értesítések</span>
-        <span style="margin-left:auto;font-size:0.68rem;color:rgba(255,255,255,0.25);font-style:italic;">hamarosan</span>
-    </span>
+        <svg class="sidebar-link-arrow" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+    </a>
 
     <a href="assets/documents/ADATKEZELESI_TAJEKOZTATO.pdf" class="sidebar-link">
         <span class="sidebar-link-icon">

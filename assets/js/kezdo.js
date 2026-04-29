@@ -1,6 +1,6 @@
 // =============================================
 // KEZDŐ OLDAL – kezdo.js
-// Accordion + scroll animációk
+// Accordion + scroll animációk + EmailJS
 // =============================================
 
 (function () {
@@ -13,11 +13,7 @@
 
         header.addEventListener('click', function () {
             const isOpen = item.classList.contains('open');
-
-            // Zárjuk be az összeset
             items.forEach(function (i) { i.classList.remove('open'); });
-
-            // Ha nem volt nyitva, nyissuk ki
             if (!isOpen) {
                 item.classList.add('open');
             }
@@ -61,7 +57,7 @@
         });
     });
 
-    // ── Jelentkezési form submit ──────────────────
+    // ── Jelentkezési form submit – EmailJS ────────
     const signupForm = document.getElementById('kf-form');
     const formMessage = document.getElementById('kf-message');
     const submitBtn = document.getElementById('kf-submit-btn');
@@ -80,8 +76,14 @@
                 submitBtn.textContent = 'Küldés...';
             }
 
-            // Ha EmailJS-t vagy saját backendet használsz, cseréld le ezt a részt
-            setTimeout(function () {
+            emailjs.send('service_odkiin2', 'template_hyaaqv6', {
+                from_name:      document.getElementById('kfName').value,
+                from_email:     document.getElementById('kfEmail').value,
+                phone:          document.getElementById('kfPhone').value,
+                selected_group: selectedGroupInput.value,
+                message:        document.getElementById('kfMessage').value,
+            })
+            .then(function () {
                 if (formMessage) {
                     formMessage.className = 'success';
                     formMessage.textContent = '✓ Jelentkezésed megkaptuk! Hamarosan felvesszük veled a kapcsolatot.';
@@ -93,7 +95,17 @@
                     submitBtn.disabled = false;
                     submitBtn.textContent = 'Jelentkezem!  →';
                 }
-            }, 800);
+            })
+            .catch(function () {
+                if (formMessage) {
+                    formMessage.className = 'error';
+                    formMessage.textContent = '✗ Hiba történt, próbáld újra!';
+                }
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Jelentkezem!  →';
+                }
+            });
         });
     }
 

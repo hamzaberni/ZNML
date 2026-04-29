@@ -1,0 +1,410 @@
+/* =============================================
+   NOTIFICATIONS – notifications.css
+   ============================================= */
+
+/* ── Változók ── */
+:root {
+    --accent-color: #CD853F;
+    --accent-dark:  #814E34;
+    --bg-dark:      #1a1a1a;
+    --bg-card:      rgba(255,255,255,0.04);
+    --border:       rgba(255,255,255,0.08);
+    --text:         rgba(255,255,255,0.85);
+    --text-muted:   rgba(255,255,255,0.4);
+    --unread-bg:    rgba(205,133,63,0.07);
+    --unread-border:rgba(205,133,63,0.25);
+}
+
+/* ── Page header ── */
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.page-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.35rem;
+}
+
+.page-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+}
+
+/* ── Eszköztár ── */
+.notif-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.notif-count {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+.notif-count span {
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+.btn-mark-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: transparent;
+    border: 1px solid rgba(205,133,63,0.3);
+    color: var(--accent-color);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.btn-mark-all:hover {
+    background: rgba(205,133,63,0.08);
+    box-shadow: 0 0 0 3px rgba(205,133,63,0.1);
+}
+
+.btn-mark-all svg {
+    width: 14px; height: 14px;
+    fill: currentColor;
+    flex-shrink: 0;
+}
+
+/* ── Lista ── */
+.notif-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* ── Értesítés kártya ── */
+.notif-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.notif-card:hover {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(255,255,255,0.14);
+    transform: translateY(-1px);
+}
+
+/* Olvasatlan */
+.notif-card.unread {
+    background: var(--unread-bg);
+    border-color: var(--unread-border);
+}
+
+.notif-card.unread::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--accent-color);
+    border-radius: 0 3px 3px 0;
+}
+
+/* Ikon */
+.notif-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.2s;
+}
+
+.notif-card.unread .notif-icon {
+    background: rgba(205,133,63,0.15);
+}
+
+.notif-icon svg {
+    width: 18px; height: 18px;
+    fill: var(--text-muted);
+}
+
+.notif-card.unread .notif-icon svg {
+    fill: var(--accent-color);
+}
+
+/* Tartalom */
+.notif-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.notif-subject {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.notif-card.unread .notif-subject {
+    color: #ffffff;
+}
+
+.notif-preview {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Badge + nyíl */
+.notif-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.notif-badge {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 50px;
+}
+
+.notif-badge.new {
+    background: rgba(205,133,63,0.15);
+    color: var(--accent-color);
+    border: 1px solid rgba(205,133,63,0.3);
+}
+
+.notif-badge.read {
+    background: rgba(255,255,255,0.05);
+    color: var(--text-muted);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.notif-arrow {
+    width: 16px; height: 16px;
+    fill: var(--text-muted);
+    opacity: 0.5;
+}
+
+/* ── Üres állapot ── */
+.notif-empty {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-muted);
+}
+
+.notif-empty svg {
+    width: 48px; height: 48px;
+    fill: currentColor;
+    opacity: 0.3;
+    margin-bottom: 1rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.notif-empty p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+}
+
+/* ── Modal ── */
+.notif-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    padding: 1.5rem;
+}
+
+.notif-modal-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.notif-modal {
+    background: #242220;
+    border: 1px solid rgba(205,133,63,0.2);
+    border-radius: 18px;
+    padding: 2rem 2rem 1.75rem;
+    max-width: 520px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    transform: translateY(20px) scale(0.97);
+    transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+}
+
+.notif-modal-overlay.open .notif-modal {
+    transform: translateY(0) scale(1);
+}
+
+.notif-modal-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.5rem;
+    background: rgba(255,255,255,0.06);
+    border: none;
+    border-radius: 8px;
+    width: 32px; height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: background 0.2s, color 0.2s;
+}
+
+.notif-modal-close:hover {
+    background: rgba(255,255,255,0.1);
+    color: #ffffff;
+}
+
+.notif-modal-close svg {
+    width: 16px; height: 16px;
+    fill: currentColor;
+}
+
+.notif-modal-icon {
+    width: 48px; height: 48px;
+    border-radius: 14px;
+    background: rgba(205,133,63,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+}
+
+.notif-modal-icon svg {
+    width: 22px; height: 22px;
+    fill: var(--accent-color);
+}
+
+.notif-modal-subject {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    padding-right: 2rem;
+    line-height: 1.35;
+}
+
+.notif-modal-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.07);
+    margin-bottom: 1rem;
+}
+
+.notif-modal-message {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+}
+
+.notif-modal-footer {
+    margin-top: 1.75rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-modal-close {
+    background: linear-gradient(135deg, #814E34 0%, #CD853F 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    padding: 0.6rem 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 3px 12px rgba(205,133,63,0.3);
+}
+
+.btn-modal-close:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(205,133,63,0.45);
+}
+
+/* ── Toast ── */
+.notif-toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: #242220;
+    border: 1px solid rgba(77,219,119,0.3);
+    color: #4ddb77;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 10000;
+    white-space: nowrap;
+}
+
+.notif-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+    .notif-card {
+        padding: 1rem 1.1rem;
+    }
+
+    .notif-toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .notif-modal {
+        padding: 1.5rem 1.25rem;
+    }
+}

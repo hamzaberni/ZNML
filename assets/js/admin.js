@@ -1,18 +1,18 @@
 // ── Demo adatok (PHP-val ezt az adatbázisból töltöd fel) ──
-const DEMO_USERS = [
-    { id: 1,  name: 'Kovács Anna',      phone: '+36 30 123 4567', email: 'anna.kovacs@email.hu',     registered: '2024-11-03', active: true  },
-    { id: 2,  name: 'Nagy Péter',       phone: '+36 70 234 5678', email: 'nagy.peter@gmail.com',      registered: '2024-11-15', active: true  },
-    { id: 3,  name: 'Szabó Eszter',     phone: '+36 20 345 6789', email: 'szabo.eszter@mail.hu',      registered: '2024-12-01', active: true  },
-    { id: 4,  name: 'Horváth Zoltán',   phone: '+36 30 456 7890', email: 'horvath.z@freemail.hu',     registered: '2024-12-10', active: false },
-    { id: 5,  name: 'Varga Réka',       phone: '+36 70 567 8901', email: 'varga.reka@gmail.com',      registered: '2024-12-22', active: true  },
-    { id: 6,  name: 'Tóth Gábor',       phone: '+36 20 678 9012', email: 'toth.gabor@email.hu',       registered: '2025-01-05', active: true  },
-    { id: 7,  name: 'Fekete Judit',     phone: '+36 30 789 0123', email: 'fekete.j@gmail.com',        registered: '2025-01-14', active: true  },
-    { id: 8,  name: 'Kiss Bálint',      phone: '+36 70 890 1234', email: 'kiss.balint@citromail.hu',  registered: '2025-01-28', active: false },
-    { id: 9,  name: 'Molnár Krisztina', phone: '+36 20 901 2345', email: 'molnar.k@gmail.com',        registered: '2025-02-03', active: true  },
-    { id: 10, name: 'Papp Dániel',      phone: '+36 30 012 3456', email: 'papp.daniel@mail.hu',       registered: '2025-02-18', active: true  },
-    { id: 11, name: 'Balogh Zsófia',    phone: '+36 70 123 4560', email: 'balogh.zsofia@email.hu',   registered: '2025-02-20', active: true  },
-    { id: 12, name: 'Farkas Ádám',      phone: '+36 20 234 5671', email: 'farkas.adam@gmail.com',     registered: '2025-02-24', active: true  },
-];
+// const DEMO_USERS = [
+//     { id: 1,  name: 'Kovács Anna',      phone: '+36 30 123 4567', email: 'anna.kovacs@email.hu',     registered: '2024-11-03', active: true  },
+//     { id: 2,  name: 'Nagy Péter',       phone: '+36 70 234 5678', email: 'nagy.peter@gmail.com',      registered: '2024-11-15', active: true  },
+//     { id: 3,  name: 'Szabó Eszter',     phone: '+36 20 345 6789', email: 'szabo.eszter@mail.hu',      registered: '2024-12-01', active: true  },
+//     { id: 4,  name: 'Horváth Zoltán',   phone: '+36 30 456 7890', email: 'horvath.z@freemail.hu',     registered: '2024-12-10', active: false },
+//     { id: 5,  name: 'Varga Réka',       phone: '+36 70 567 8901', email: 'varga.reka@gmail.com',      registered: '2024-12-22', active: true  },
+//     { id: 6,  name: 'Tóth Gábor',       phone: '+36 20 678 9012', email: 'toth.gabor@email.hu',       registered: '2025-01-05', active: true  },
+//     { id: 7,  name: 'Fekete Judit',     phone: '+36 30 789 0123', email: 'fekete.j@gmail.com',        registered: '2025-01-14', active: true  },
+//     { id: 8,  name: 'Kiss Bálint',      phone: '+36 70 890 1234', email: 'kiss.balint@citromail.hu',  registered: '2025-01-28', active: false },
+//     { id: 9,  name: 'Molnár Krisztina', phone: '+36 20 901 2345', email: 'molnar.k@gmail.com',        registered: '2025-02-03', active: true  },
+//     { id: 10, name: 'Papp Dániel',      phone: '+36 30 012 3456', email: 'papp.daniel@mail.hu',       registered: '2025-02-18', active: true  },
+//     { id: 11, name: 'Balogh Zsófia',    phone: '+36 70 123 4560', email: 'balogh.zsofia@email.hu',   registered: '2025-02-20', active: true  },
+//     { id: 12, name: 'Farkas Ádám',      phone: '+36 20 234 5671', email: 'farkas.adam@gmail.com',     registered: '2025-02-24', active: true  },
+// ];
 
 const ROWS_PER_PAGE = 8;
 const notifHistory  = [];
@@ -20,8 +20,8 @@ let sentCount       = 0;
 
 // ── State ────
 let state = {
-    users:    [...DEMO_USERS],
-    filtered: [...DEMO_USERS],
+    users:    [],
+    filtered: [],
     selected: new Set(),
     page:     1,
     search:   '',
@@ -90,16 +90,10 @@ function applyFilter() {
 
 function renderTable() {
     const tbody    = document.getElementById('usersBody');
-    const empty    = document.getElementById('tableEmpty');
     const start    = (state.page - 1) * ROWS_PER_PAGE;
     const pageData = state.filtered.slice(start, start + ROWS_PER_PAGE);
 
-    if (state.filtered.length === 0) {
-        tbody.innerHTML = '';
-        empty.style.display = 'flex';
-        return;
-    }
-    empty.style.display = 'none';
+    if (!tbody || pageData.length === 0) return;
 
     tbody.innerHTML = pageData.map(u => `
         <tr data-id="${u.id}" class="${state.selected.has(u.id) ? 'selected' : ''}">
@@ -162,8 +156,6 @@ function renderTable() {
             updateBulkBar();
             updateStats();
             document.getElementById('notifications').scrollIntoView({ behavior: 'smooth' });
-            document.querySelector('[name="recipients"][value="selected"]').checked = true;
-            document.getElementById('selectedCount').textContent = 1;
         });
     });
 
@@ -208,7 +200,7 @@ function renderPagination() {
 }
 
 // ── Select all ──────
-document.getElementById('selectAll').addEventListener('change', function () {
+document.getElementById('selectAll')?.addEventListener('change', function () {
     const start    = (state.page - 1) * ROWS_PER_PAGE;
     const pageData = state.filtered.slice(start, start + ROWS_PER_PAGE);
     pageData.forEach(u => { if (this.checked) state.selected.add(u.id); else state.selected.delete(u.id); });
@@ -223,35 +215,32 @@ function updateBulkBar() {
     const count = document.getElementById('bulkCount');
     count.textContent = state.selected.size;
     bar.classList.toggle('visible', state.selected.size > 0);
-
-    document.getElementById('selectedCount').textContent = state.selected.size;
 }
 
-document.getElementById('bulkClearBtn').addEventListener('click', () => {
+document.getElementById('bulkClearBtn')?.addEventListener('click', () => {
     state.selected.clear();
     updateBulkBar();
     updateStats();
     renderTable();
 });
 
-document.getElementById('bulkNotifBtn').addEventListener('click', () => {
+document.getElementById('bulkNotifBtn')?.addEventListener('click', () => {
     document.getElementById('notifications').scrollIntoView({ behavior: 'smooth' });
-    document.querySelector('[name="recipients"][value="selected"]').checked = true;
 });
 
 // ── Keresés & szűrés ──
-document.getElementById('searchInput').addEventListener('input', e => {
+document.getElementById('searchInput')?.addEventListener('input', e => {
     state.search = e.target.value.trim();
     applyFilter();
 });
 
-document.getElementById('sortSelect').addEventListener('change', e => {
+document.getElementById('sortSelect')?.addEventListener('change', e => {
     state.sort = e.target.value;
     applyFilter();
 });
 
 // ── Export CSV ──
-document.getElementById('exportBtn').addEventListener('click', () => {
+document.getElementById('exportBtn')?.addEventListener('click', () => {
     const headers = ['ID', 'Név', 'Telefonszám', 'Email', 'Regisztráció', 'Státusz'];
     const rows    = state.filtered.map(u => [
         u.id, u.name, u.phone, u.email, u.registered, u.active ? 'Aktív' : 'Inaktív'
@@ -277,7 +266,6 @@ function updateStats() {
     document.getElementById('statNew').textContent      = newUsers;
     document.getElementById('statNotifs').textContent   = sentCount;
     document.getElementById('statSelected').textContent = state.selected.size;
-    document.getElementById('recipientCount').textContent = state.users.length;
 }
 
 // ── Modal ──
@@ -329,49 +317,27 @@ function closeModal() {
     currentModalUser = null;
 }
 
-document.getElementById('modalClose').addEventListener('click', closeModal);
-document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
+document.getElementById('modalClose')?.addEventListener('click', closeModal);
+document.getElementById('modalCloseBtn')?.addEventListener('click', closeModal);
 modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) closeModal(); });
 
-document.getElementById('modalNotifBtn').addEventListener('click', () => {
+document.getElementById('modalNotifBtn')?.addEventListener('click', () => {
     if (!currentModalUser) return;
     state.selected = new Set([currentModalUser.id]);
     updateBulkBar(); updateStats();
     closeModal();
     document.getElementById('notifications').scrollIntoView({ behavior: 'smooth' });
-    document.querySelector('[name="recipients"][value="selected"]').checked = true;
 });
 
 // ── Értesítés form ──
 const notifTitle = document.getElementById('notifTitle');
 const notifMsg   = document.getElementById('notifMsg');
 const charCount  = document.getElementById('charCount');
-const notifPreview = document.getElementById('notifPreview');
 
 notifMsg.addEventListener('input', () => {
     const len = notifMsg.value.length;
     charCount.textContent = len;
     charCount.style.color = len > 450 ? '#ffaa00' : len > 499 ? '#ff4d4d' : '';
-    updatePreview();
-});
-
-notifTitle.addEventListener('input', updatePreview);
-
-function updatePreview() {
-    const t = notifTitle.value.trim();
-    const m = notifMsg.value.trim();
-    if (t || m) {
-        notifPreview.style.display = 'block';
-        document.getElementById('previewTitle').textContent = t || '(tárgy nélkül)';
-        document.getElementById('previewMsg').textContent   = m || '(üzenet nélkül)';
-    } else {
-        notifPreview.style.display = 'none';
-    }
-}
-
-document.getElementById('previewBtn').addEventListener('click', () => {
-    notifPreview.style.display = notifPreview.style.display === 'none' ? 'block' : 'none';
-    updatePreview();
 });
 
 // Sablonok
@@ -380,61 +346,19 @@ document.querySelectorAll('.btn-template').forEach(btn => {
         notifTitle.value = btn.dataset.title;
         notifMsg.value   = btn.dataset.msg;
         charCount.textContent = notifMsg.value.length;
-        updatePreview();
     });
 });
 
 // Küldés
-document.getElementById('notifForm').addEventListener('submit', e => {
-    e.preventDefault();
+document.getElementById('notifForm')?.addEventListener('submit', e => {
+    const title   = notifTitle.value.trim();
+    const message = notifMsg.value.trim();
 
-    const title     = notifTitle.value.trim();
-    const message   = notifMsg.value.trim();
-    const recipient = document.querySelector('[name="recipients"]:checked').value;
-
-    if (!title || !message) { showToast('Töltsd ki az összes mezőt!', 'error'); return; }
-
-    const count = recipient === 'all'
-        ? state.users.length
-        : state.selected.size;
-
-    if (recipient === 'selected' && count === 0) {
-        showToast('Nincs kijelölt felhasználó!', 'error'); return;
+    if (!title || !message) {
+        e.preventDefault();
+        showToast('Töltsd ki az összes mezőt!', 'error');
     }
-
-    // Hozzáadjuk az előzményekhez
-    sentCount++;
-    notifHistory.unshift({ title, message, count, date: new Date() });
-    renderHistory();
-    updateStats();
-
-    document.getElementById('notifForm').reset();
-    charCount.textContent = 0;
-    notifPreview.style.display = 'none';
-
-    showToast(`Értesítés elküldve ${count} felhasználónak!`);
 });
-
-function renderHistory() {
-    const list = document.getElementById('historyList');
-    if (notifHistory.length === 0) {
-        list.innerHTML = '<p style="font-size:.82rem;color:rgba(255,255,255,.25);padding:.5rem 0">Még nem küldtél értesítést.</p>';
-        return;
-    }
-
-    list.innerHTML = notifHistory.slice(0, 5).map(h => `
-        <div class="history-item">
-            <div class="history-icon">
-                <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="currentColor"/></svg>
-            </div>
-            <div class="history-info">
-                <div class="history-info-title">${h.title}</div>
-                <div class="history-info-meta">${h.date.toLocaleDateString('hu-HU', { month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</div>
-            </div>
-            <span class="history-count">${h.count} fő</span>
-        </div>
-    `).join('');
-}
 
 let toastTimer;
 
@@ -459,4 +383,3 @@ function showToast(msg, type = 'success') {
 // ── Init ──
 updateStats();
 applyFilter();
-renderHistory();
