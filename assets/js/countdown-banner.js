@@ -6,7 +6,7 @@
 (function () {
 
     // ── Céldátum ─────────────────────────────────
-    const TARGET_DATE = new Date('2026-05-05T00:00:00');
+    const TARGET_DATE = new Date('2026-05-05T07:30:00');
 
     // ── DOM elemek ───────────────────────────────
     const banner    = document.getElementById('countdownBanner');

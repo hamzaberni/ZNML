@@ -432,7 +432,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['is_admin']) && $_SESSION['is
                     
                     <div class="consult-package-price">Fekete Zsanna</div>
                     <ul class="consult-package-features compact">
-                        <li>Gyógytorna</li>
+                        <li>Fizioterápiás tréning</li>
                     </ul>
 
 

@@ -383,6 +383,7 @@ p.lead {
 .blog-hero-overlay,
 .hero-overlay,
 .ladies-hero-overlay,
+.mobility-hero-overlay,
 .peach-hero-overlay,
 .manmaker-hero-overlay,
 .core-hero-overlay,
@@ -411,6 +412,7 @@ p.lead {
 .arch-hero-subtitle,
 .blog-hero-subtitle,
 .ladies-hero-subtitle,
+.mobility-hero-subtitle,
 .peach-hero-subtitle,
 .core-hero-subtitle,
 .manmaker-hero-subtitle,
@@ -723,7 +725,6 @@ p.lead {
   pointer-events: none;
 }
 .portfolio-item .portfolio-image {
-    background-color: #ffffff;
     min-height: 400px;
     display: flex;
     align-items: center;
@@ -731,17 +732,15 @@ p.lead {
 }
 
 .portfolio-item .portfolio-image img {
-    max-width: 100%; 
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 .portfolio-card {
   position: relative;
   overflow: hidden;
   border-radius: 8px;
-  height: 400px;
+  height: 560px;
 }
 .classes-link {
   color: #CD853F;
@@ -1128,6 +1127,8 @@ p.lead {
 .footer-copyright {
   color: rgba(255, 255, 255, 0.7);
   margin: 0;
+  white-space: nowrap;
+  font-size: 0.85rem;
 }
 .author-name,
 .blog-detail-hero-content,
@@ -1367,6 +1368,7 @@ p.lead {
 .arch-hero-background,
 .blog-hero-background,
 .ladies-hero-background,
+.mobility-hero-background,
 .peach-hero-background,
 .core-hero-background,
 .manmaker-hero-background,
@@ -1597,6 +1599,7 @@ p.lead {
 .space-hero-section,
 .arch-hero-section,
 .ladies-hero-section,
+.mobility-hero-section,
 .rawpower-hero-section,
 .peach-hero-section,
 .core-hero-section,
@@ -1619,6 +1622,7 @@ p.lead {
 .arch-hero-title,
 .blog-hero-title,
 .ladies-hero-title,
+.mobility-hero-title,
 .peach-hero-title,
 .core-hero-title,
 .manmaker-hero-title,
@@ -1896,6 +1900,19 @@ p.lead {
   background-size: cover;
   background-position: center;
 }
+
+.mobility-hero-background {
+  background: url("../images/edzespics/mobility.jpg") center/cover no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+
 .peach-hero-background {
   background: url("../images/edzespics/peach.jpg") center/cover no-repeat;
   position: absolute;

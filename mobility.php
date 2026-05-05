@@ -201,17 +201,17 @@ session_start();
     </nav>
 
     <!-- Hero Section -->
-    <section class="ladies-hero-section">
-        <div class="ladies-hero-background"></div>
-        <div class="ladies-hero-overlay"></div>
+    <section class="mobility-hero-section">
+        <div class="mobility-hero-background"></div>
+        <div class="mobility-hero-overlay"></div>
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-lg-8">
-                    <h1 class="ladies-hero-title" data-aos="fade-up" data-aos-delay="300">
+                    <h1 class="mobility-hero-title" data-aos="fade-up" data-aos-delay="300">
                         Edzéseink
                         <!-- <span class="accent-text">Excellence</span> -->
                     </h1>
-                    <p class="ladies-hero-subtitle" data-aos="fade-up" data-aos-delay="500">
+                    <p class="mobility-hero-subtitle" data-aos="fade-up" data-aos-delay="500">
                         Mobility
                     </p>
                 </div>
